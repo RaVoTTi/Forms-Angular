@@ -1,14 +1,67 @@
-<h2>Template: Basics</h2>
+<h2>Reactive: <small>Basics</small></h2>
 <div class="row">
   <div class="col">
-    <form>
-        <div class="mb-3 row">
-            <label class="col-sm-3 col-form-label"> Producto</label>
-            <div class="col-sm-9">
-                <input type="text" class="form-control">
-                <span class="form-text text-danger">Debe ser de 3 letras </span>
-            </div>
+    <form (ngSubmit)="save()" autocomplete="off" [formGroup]="myForm">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label"> Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="name"
+            placeholder="Product name"
+            autocomplete="off"
+          />
+          <span
+            *ngIf="validateCamp('name')"
+            class="form-text text-danger"
+            >Debe ser de 4 letras
+          </span>
         </div>
+      </div>
+      <div class="mb-3 row">
+        <label  class="col-sm-3 col-form-label"> Precio Producto</label>
+        <div class="col-sm-9">
+          <input type="number" placeholder="Product price" class="form-control" formControlName="price" />
+          <span *ngIf="validateCamp('price')" class="form-text text-danger">Debe ser mayor a 0 </span>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Existencias Producto</label>
+        <div class="col-sm-9">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Product quantity"
+            formControlName="quantity"
+          />
+          <span *ngIf="validateCamp('quantity')" class="form-text text-danger">Debe ser mayor a 0 </span>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+          >
+            Save
+          </button>
+        </div>
+      </div>
     </form>
+    <div class="row mt-3">
+      <div class="col">
+        <span>Valid</span>
+        <pre>{{ myForm.valid }}</pre>
+
+        <span>Pristine</span>
+        <pre>{{ myForm.pristine }}</pre>
+        <span>Touched</span>
+        <pre>{{ myForm.touched }}</pre>
+        <span>Value</span>
+        <pre>{{ myForm.value | json }}</pre>
+      </div>
+    </div>
   </div>
 </div>

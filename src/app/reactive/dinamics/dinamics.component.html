@@ -1,1 +1,43 @@
-<p>dinamics works!</p>
+<h2>Reactive: <small>Dinamics</small></h2>
+<hr />
+
+<form (ngSubmit)="save()" [formGroup]="myForm" >
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label"> Name</label>
+    <div class="col-sm-9">
+      <input class="input form-control" formControlName="name"  placeholder="Name" />
+      <span *ngIf="validateCamp('name')" class="form-text text-danger">Debe tener un minimo de 3 caracteres </span>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label">Agregar</label>
+    <div class="col-sm-9">
+      <div class="input-group">
+        <input class="form-control" formControlName="newGame" placeholder="Game" />
+        <button class="btn btn-outline-primary" type="button">Add</button>
+      </div>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label class="col-sm-3 col-form-label"> Favs</label>
+    <div class="col-sm-9">
+      <!-- <div class=" input-group mb-2" *ngFor="let fav of person.favs; let i = index">
+
+          <input
+          type="text"  
+          class="form-control"
+          />
+          <button class="btn btn-outline-danger" > Remove </button>
+
+        </div> -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <button type="submit" class="btn btn-primary float-end">Save</button>
+    </div>
+  </div>
+</form>
+
+<!-- <span>Person</span>
+<pre>{{person | json}}</pre>  -->
